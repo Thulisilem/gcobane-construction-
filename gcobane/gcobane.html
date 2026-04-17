@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gcobane Construction & Projects | Industrial Excellence</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --accent: #fbbf24; 
+            --bg: #050505;
+            --surface: #0f1115;
+            --surface-light: #1a1d23;
+            --text-muted: #94a3b8;
+            --border: rgba(251, 191, 36, 0.2);
+            --glass: rgba(255, 255, 255, 0.03);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; overflow-x: hidden; }
+        body { background: var(--bg); color: #fff; font-family: 'Inter', sans-serif; overflow-x: hidden; width: 100%; line-height: 1.6; }
+
+        h1, h2, h3 { font-family: 'Syncopate', sans-serif; text-transform: uppercase; letter-spacing: 2px; }
+
+        /* --- DYNAMIC ANIMATIONS --- */
+        [data-reveal] { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+        [data-reveal].active { opacity: 1; transform: translateY(0); }
+
+        header {
+            position: fixed; width: 100%; top: 0; z-index: 1000;
+            padding: 15px 5%; display: flex; justify-content: space-between; align-items: center;
+            backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.05);
+            background: rgba(5,5,5,0.8);
+        }
+
+        .logo { font-weight: 700; font-size: 0.8rem; color: var(--accent); text-decoration: none; }
+
+        /* --- HERO --- */
+        .hero {
+            min-height: 100vh; display: flex; flex-direction: column; justify-content: center;
+            padding: 100px 5% 40px;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)), url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover; background-position: center;
+            background-attachment: fixed;
+        }
+
+        .premium-h1 { font-size: clamp(2.5rem, 8vw, 5.5rem); line-height: 1; margin-bottom: 20px; }
+        .premium-h1 span { display: block; color: transparent; -webkit-text-stroke: 1px #fff; font-style: italic; }
+
+        /* --- TICKER --- */
+        .ticker { background: var(--accent); color: #000; padding: 15px 0; overflow: hidden; white-space: nowrap; font-weight: 800; font-size: 0.7rem; }
+        .ticker-inner { display: inline-block; animation: ticker 30s linear infinite; }
+        @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+        /* --- MISSION SECTION (NEW) --- */
+        .mission-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 50px; padding: 100px 5%; align-items: center; }
+        .mission-img { width: 100%; border-radius: 20px; filter: grayscale(1); transition: 0.5s; border: 1px solid var(--border); }
+        .mission-img:hover { filter: grayscale(0); }
+
+        /* --- SERVICES BENTO --- */
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; padding: 80px 5%; }
+        .service-card { 
+            height: 400px; position: relative; border-radius: 20px; overflow: hidden; border: 1px solid var(--border);
+            background: var(--surface);
+        }
+        .service-card img { width: 100%; height: 100%; object-fit: cover; opacity: 0.4; transition: 0.7s; }
+        .service-card:hover img { opacity: 0.7; transform: scale(1.05); }
+        .service-overlay { position: absolute; bottom: 0; padding: 30px; background: linear-gradient(transparent, rgba(0,0,0,0.9)); width: 100%; }
+
+        /* --- PROJECT GALLERY (NEW) --- */
+        .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; padding: 5px; background: #000; }
+        .gallery-item { height: 250px; overflow: hidden; position: relative; }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.6); transition: 0.4s; }
+        .gallery-item:hover img { filter: brightness(1); transform: scale(1.1); }
+
+        /* --- STATS --- */
+        .stats-row { 
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); 
+            gap: 20px; padding: 60px 5%; background: var(--surface);
+        }
+        .stat-item { text-align: center; padding: 30px; background: var(--glass); border-radius: 15px; border: 1px solid rgba(255,255,255,0.05); }
+        .stat-item h4 { color: var(--accent); font-size: 2rem; }
+
+        /* --- CONTACT --- */
+        .contact-section { padding: 100px 5%; display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 80px; }
+        .contact-form { background: var(--surface-light); padding: 40px; border-radius: 20px; border: 1px solid var(--border); }
+        input, textarea { width: 100%; background: #050505; border: 1px solid #333; padding: 18px; color: #fff; margin-bottom: 20px; border-radius: 8px; font-family: 'Inter'; outline: none; }
+        input:focus { border-color: var(--accent); }
+
+        .cta-button { 
+            display: inline-block; padding: 20px 45px; background: var(--accent); color: #000; 
+            text-decoration: none; font-family: 'Syncopate'; font-weight: 700; font-size: 0.75rem; border-radius: 5px;
+            transition: 0.3s;
+        }
+        .cta-button:hover { background: #fff; transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.4); }
+
+        footer { padding: 80px 5% 40px; background: #000; border-top: 1px solid #111; text-align: center; }
+
+        @media (min-width: 768px) {
+            header, .hero, .mission-grid, .services-grid, .stats-row, .contact-section { padding-left: 10%; padding-right: 10%; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo">GCOBANE CONSTRUCTION</a>
+        <nav style="display: flex; gap: 25px; font-size: 0.65rem; font-family: 'Syncopate';">
+            <a href="#services" style="color:#fff; text-decoration:none;">SERVICES</a>
+            <a href="#projects" style="color:#fff; text-decoration:none;">PORTFOLIO</a>
+            <a href="#contact" style="color:var(--accent); text-decoration:none;">INQUIRE</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1 class="premium-h1" data-reveal>Engineered <span>Precision.</span></h1>
+        <p style="border-left: 3px solid var(--accent); padding-left: 25px; max-width: 600px; color: #cbd5e1; margin-bottom: 40px; font-size: 1.1rem;" data-reveal>
+            Gcobane Projects is a <strong>Level 1 B-BBEE</strong> leader in South Africa's construction landscape, specializing in high-stakes civil, electrical, and structural engineering.
+        </p>
+        <div data-reveal><a href="#contact" class="cta-button">REQUEST QUOTATION</a></div>
+    </section>
+
+    <div class="ticker">
+        <div class="ticker-inner">
+            CSD: MAAA1568982 • CIDB: 10237509 • SARS COMPLIANT • COIDA CERTIFIED • 100% BLACK OWNED • CIPC: 2017/420/520/07 • QUALITY ASSURED • ISO ALIGNED • CSD: MAAA1568982 • CIDB: 10237509
+        </div>
+    </div>
+
+    <section class="mission-grid" id="about">
+        <div data-reveal>
+            <img src="C:\Users\thuli\OneDrive\Desktop\gcobane\site.jpeg" class="mission-img" alt="Construction Site">
+        </div>
+        <div data-reveal>
+            <span style="color: var(--accent); font-size: 0.7rem; font-weight: 700; letter-spacing: 3px; display: block; margin-bottom: 20px;">OUR MISSION</span>
+            <h2 style="margin-bottom: 25px;">Building the <span style="color: var(--accent);">Future</span> of Africa.</h2>
+            <p style="color: var(--text-muted); margin-bottom: 20px;">Since 2017, Gcobane has been at the forefront of infrastructure development in Gauteng. We don't just build structures; we build reliability and economic growth.</p>
+            <ul style="list-style: none; color: #fff; font-weight: 600;">
+                <li style="margin-bottom: 10px;">→ Sustainable Civil Works</li>
+                <li style="margin-bottom: 10px;">→ Advanced Electrical Grids</li>
+                <li style="margin-bottom: 10px;">→ Masterful Building Projects</li>
+            </ul>
+        </div>
+    </section>
+
+    <div class="stats-row" data-reveal>
+        <div class="stat-item"><h4>09+</h4><p>Years Excellence</p></div>
+        <div class="stat-item"><h4>50+</h4><p>Tiers Delivered</p></div>
+        <div class="stat-item"><h4>L1</h4><p>B-BBEE Contributor</p></div>
+        <div class="stat-item"><h4>100%</h4><p>Safety Compliance</p></div>
+    </div>
+
+    <section id="services">
+        <div style="text-align: center; margin-bottom: 60px;" data-reveal>
+            <h2 style="font-size: 1.5rem;">Core Capabilities</h2>
+            <div style="width: 50px; height: 3px; background: var(--accent); margin: 20px auto;"></div>
+        </div>
+        <div class="services-grid">
+            <div class="service-card" data-reveal>
+                <img src="C:\Users\thuli\OneDrive\Desktop\gcobane\structural.jpg" alt="Structural">
+                <div class="service-overlay"><h3>Structural</h3><p>Reinforced concrete and steel frames.</p></div>
+            </div>
+            <div class="service-card" data-reveal>
+                <img src="C:\Users\thuli\OneDrive\Desktop\gcobane\elec.jpg" alt="Electrical">
+                <div class="service-overlay"><h3>Electrical</h3><p>Reticulation and substation maintenance.</p></div>
+            </div>
+            <div class="service-card" data-reveal>
+                <img src="C:\Users\thuli\OneDrive\Desktop\gcobane\civil.jpg" alt="Civil">
+                <div class="service-overlay"><h3>Civil</h3><p>High-traffic roadworks and drainage.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2 style="padding: 40px 10%; font-size: 1rem;" data-reveal>Recent <span style="color: var(--accent);">Impact</span></h2>
+        <div class="gallery">
+            <div class="gallery-item"><img src="C:\Users\thuli\OneDrive\Desktop\gcobane\plumbing.jpg" alt="Tech"></div>
+            <div class="gallery-item"><img src="C:\Users\thuli\OneDrive\Desktop\gcobane\building.jpg" alt="Building"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2070" alt="Road"></div>
+            <div class="gallery-item"><img src="C:\Users\thuli\OneDrive\Desktop\gcobane\structural.jpg" alt="Site"></div>
+<div class="gallery-item"><img src="C:\Users\thuli\OneDrive\Desktop\gcobane\gen.jpg" alt="Site"></div>
+<div class="gallery-item"><img src="C:\Users\thuli\OneDrive\Desktop\gcobane\ele.jpeg" alt="Site"></div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <div data-reveal>
+            <span style="color: var(--accent); font-weight: 700; font-size: 0.7rem; letter-spacing: 2px;">HEADQUARTERS</span>
+            <h2 style="margin: 20px 0;">Let's Build <br>Something Great.</h2>
+            <p style="color: var(--text-muted); margin-bottom: 40px;">Reach out to our technical team for tenders, partnerships, or private consultations.</p>
+            <div style="line-height: 2;">
+                <p>📍 05 Waterkloof St, Crystal Park, Benoni</p>
+                <p>📞 072 192 9951 / 0713020734</p>
+                <p>✉ mambakenneth@gmail.com</p>
+            </div>
+        </div>
+        <form class="contact-form" data-reveal>
+            <input type="text" placeholder="Full Name" required>
+            <input type="email" placeholder="Email Address" required>
+            <textarea rows="5" placeholder="Detailed Project Scope" required></textarea>
+            <button class="cta-button" style="width: 100%; border: none; cursor: pointer;">SUBMIT TENDER INQUIRY</button>
+        </form>
+    </section>
+
+    <footer>
+        <div class="logo" style="margin-bottom: 20px; font-size: 1.2rem;">GCOBANE<span style="color: #fff;">.</span></div>
+        <p style="font-size: 0.65rem; color: var(--text-muted); letter-spacing: 3px; text-transform: uppercase;">
+            © 2026 GCOBANE CONSTRUCTION & PROJECTS PTY LTD • CSD: MAAA1568982
+        </p>
+    </footer>
+
+    <script>
+        const reveal = () => {
+            const reveals = document.querySelectorAll('[data-reveal]');
+            reveals.forEach(el => {
+                const windowHeight = window.innerHeight;
+                const revealTop = el.getBoundingClientRect().top;
+                const revealPoint = 100;
+                if (revealTop < windowHeight - revealPoint) {
+                    el.classList.add('active');
+                }
+            });
+        };
+        window.addEventListener('scroll', reveal);
+        window.addEventListener('load', reveal);
+    </script>
+</body>
+</html>
