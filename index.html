@@ -193,12 +193,25 @@
                 <p>✉ mambakenneth@gmail.com</p>
             </div>
         </div>
-        <form class="contact-form" data-reveal>
-            <input type="text" placeholder="Full Name" required>
-            <input type="email" placeholder="Email Address" required>
-            <textarea rows="5" placeholder="Detailed Project Scope" required></textarea>
-            <button class="cta-button" style="width: 100%; border: none; cursor: pointer;">SUBMIT TENDER INQUIRY</button>
-        </form>
+        <form class="contact-form" 
+action="https://formspree.io/f/xqewqldr" 
+method="POST"
+onsubmit="gtag('event', 'form_submit', {
+  'event_category': 'contact',
+  'event_label': 'tender_form'
+});">
+
+  <input type="text" name="name" placeholder="Full Name" required>
+  <input type="email" name="email" placeholder="Email Address" required>
+  <textarea name="message" rows="5" placeholder="Detailed Project Scope" required></textarea>
+
+  <input type="hidden" name="_subject" value="New Tender Inquiry">
+  <input type="hidden" name="_redirect" value="https://yourwebsite.com/thank-you.html">
+
+  <button type="submit" class="cta-button" style="width: 100%; border: none; cursor: pointer;">
+    SUBMIT TENDER INQUIRY
+  </button>
+</form>
     </section>
 
     <footer>
